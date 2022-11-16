@@ -23,8 +23,15 @@ public class LoansController {
         return loansRepository.findByCustomerIdOrderByStartDtDesc(customerId);
     }
 
-    @GetMapping
+    @GetMapping(value = "/loan")
     public Optional<List<Loans>> findByCustomerIdOrderByStartDtDescLoans(@RequestBody Customer customer){
         return loansRepository.findByCustomerIdOrderByStartDtDesc(customer.customerId());
+    }
+
+    @PostMapping("/myLoans")
+    public Optional<List<Loans>>getLoansDetails(@RequestBody Customer customer) {
+       return loansRepository.findByCustomerIdOrderByStartDtDesc(customer.customerId());
+
+
     }
 }
