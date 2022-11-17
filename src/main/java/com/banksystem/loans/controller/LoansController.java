@@ -30,6 +30,7 @@ public class LoansController {
 
     @PostMapping("/myLoans")
     public Optional<List<Loans>>getLoansDetails(@RequestBody Customer customer) {
+        System.out.println("Invoking getLoansDetails");
        return loansRepository.findByCustomerIdOrderByStartDtDesc(customer.customerId());
 
 
