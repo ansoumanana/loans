@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "loans")
+//@RequestMapping(value = "loans")
 public class LoansController {
 
     private final LoansRepository loansRepository;
@@ -19,17 +19,17 @@ public class LoansController {
     }
 
     @GetMapping(value = "/{customerId}")
-    public Optional<List<Loans>> findByCustomerIdOrderByStartDtDescLoans(@PathVariable int customerId){
+    public Optional<List<Loans>> findByCustomerIdOrderByStartDtDescLoans(@RequestHeader("banksystem-correlation-id") String correlationId,@PathVariable int customerId){
         return loansRepository.findByCustomerIdOrderByStartDtDesc(customerId);
     }
 
     @GetMapping(value = "/loan")
-    public Optional<List<Loans>> findByCustomerIdOrderByStartDtDescLoans(@RequestBody Customer customer){
+    public Optional<List<Loans>> findByCustomerIdOrderByStartDtDescLoans(@RequestHeader("banksystem-correlation-id") String correlationId,@RequestBody Customer customer){
         return loansRepository.findByCustomerIdOrderByStartDtDesc(customer.customerId());
     }
 
     @PostMapping("/myLoans")
-    public Optional<List<Loans>>getLoansDetails(@RequestBody Customer customer) {
+    public Optional<List<Loans>>getLoansDetails(@RequestHeader("banksystem-correlation-id") String correlationId,@RequestBody Customer customer) {
         System.out.println("Invoking getLoansDetails");
        return loansRepository.findByCustomerIdOrderByStartDtDesc(customer.customerId());
 

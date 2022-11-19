@@ -7,7 +7,7 @@ spring:
     profiles:
         active: prod
     config:
-        import: optional:configserver:http://configserver:8070/
+        import: optional:configserver:http://localhost:8070/
 management:
     endpoint:
       shutdown:
@@ -29,4 +29,4 @@ eureka :
 
 
         serviceUrl:
-            defaultZone: http://eurekaserver:8090/eureka/
+            defaultZone: http://localhost:8090/eureka/
