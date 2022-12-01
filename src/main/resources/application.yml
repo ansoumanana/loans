@@ -1,32 +1,6 @@
 ---
-server:
-    port: 7000
 spring:
     application:
         name: loans
-    profiles:
-        active: prod
     config:
         import: optional:configserver:http://configserver:8070/
-management:
-    endpoint:
-      shutdown:
-        enabled: true
-    auditevents:
-        enabled: true
-    endpoints:
-        web:
-            exposure:
-                include: '*'
-
-eureka :
-    instance:
-        app-name: loans
-        prefer-ip-address: true
-    client:
-        registerWithEureka: true
-        fetch-registry: true
-
-
-        serviceUrl:
-            defaultZone: http://eurekaserver:8090/eureka/
