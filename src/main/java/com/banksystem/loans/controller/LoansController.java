@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-//@RequestMapping(value = "loans")
+@RequestMapping("/api/v1/loans")
 public class LoansController {
     private static final Logger logger = LoggerFactory.getLogger(LoansController.class);
     private final LoansRepository loansRepository;
